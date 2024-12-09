@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>CHECKOUT</h1>
+    <form method="POST" action="{{ url_for('checkout') }}">
+        <!-- Address Line 1 -->
+        <div class="form-group">
+            <input type="text" name="address_line_1" id="address_line_1" class="login_password form-control" placeholder="ADDRESS LINE 1" required>
+        </div>
+
+        <!-- Address Line 2 (Optional) -->
+        <div class="form-group">
+            <input type="text" name="address_line_2" id="address_line_2" class="login_password form-control" placeholder="ADDRESS LINE 2 (OPTIONAL)">
+        </div>
+
+        <!-- Postcode -->
+        <div class="form-group">
+            <input type="text" name="postcode" id="postcode" class="login_password form-control" placeholder="POSTCODE" Required>
+        </div>
+
+        <!-- City -->
+        <div class="form-group">
+            <input type="text" name="city" id="city" class="login_password form-control" placeholder="CITY" Required>
+        </div>
+
+        <!-- Country -->
+        <div class="form-group">
+            <input type="text" name="country" id="country" class="login_password form-control" placeholder="COUNTRY" Required>
+        </div>
+
+        <!-- Confirm Order Button -->
+        <button type="submit" class="cart btn btn-primary">CONFIRM ORDER</button>
+    </form>
+</div>
+{% endblock %}

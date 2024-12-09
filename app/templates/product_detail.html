@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ product.image_url }}" class="img-fluid" alt="{{ product.name }}">
+        </div>
+        <div class="col-md-6">
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.description }}</p>
+            <p>{{ product.price }}</p>
+
+            <!-- Product Sizes -->
+            <h5>Available Sizes:</h5>
+            <ul>
+                <li>S: {{ product.stock_s }} in stock</li>
+                <li>M: {{ product.stock_m }} in stock</li>
+                <li>L: {{ product.stock_l }} in stock</li>
+            </ul>
+
+            <!-- Add to Cart form -->
+            <form method="POST" action="{{ url_for('add_to_cart', product_id=product.id) }}" class="mb-3">
+                <input type="hidden" name="product_id" value="{{ product.id }}">
+
+                <label for="size">Size</label>
+                <select name="size" id="size" class="form-control mb-3">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                </select>
+
+                <label for="quantity">Quantity</label>
+                <input type="number" name="quantity" class="form-control mb-3" value="1" min="1">
+                <button type="submit" class="add btn w-100 mb-3">ADD TO CART</button>
+            </form>
+
+            <!-- Add to Favorites Button -->
+            <form method="POST" action="{{ url_for('add_to_favorites', product_id=product.id) }}">
+                <button type="submit" class="gender btn w-100 mb-3">ADD TO FAVORITES</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

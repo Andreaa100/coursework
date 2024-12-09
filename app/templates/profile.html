@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>YOUR PROFILE</h1>
+    <div class="card-body">
+        <p><strong>NAME:</strong> {{ user.name }}</p>
+        <p><strong>SURNAME:</strong> {{ user.surname }}</p>
+        <p><strong>EMAIL:</strong> {{ user.email }}</p>
+    </div>
+
+    <!-- Change Password Section -->
+    <div class="container mt-3">
+        <h3>CHANGE PASSWORD</h3>
+        <form method="POST" action="{{ url_for('change_password') }}">
+            <div class="form-group">
+                <input type="password" name="current_password" id="current_password" class="form-control" placeholder="CURRENT PASSWORD" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="new_password" id="new_password" class="form-control" placeholder="NEW PASSWORD" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="CONFIRM PASSWORD"required>
+            </div>
+            <button type="submit" class="cart btn btn-primary">CHANGE PASSWORD</button>
+        </form>
+
+    <div class="form-group">
+        <a href="{{ url_for('order_history') }}" class="history btn btn-primary">VIEW ORDER HISTORY</a>
+    </div>
+
+    <!-- Logout -->
+    <div class="form-group">
+        <form method="POST" action="{{ url_for('logout') }}">
+            <button type="submit" class="logout btn">Logout</button>
+        </form>
+    </div>
+
+    <!-- Delete Account -->
+    <div class="form-group">
+        <form method="POST" action="{{ url_for('delete_account') }}">
+            <button type="submit" class="logout">Delete Account</button>
+        </form>
+    </div>
+    </div>
+</div>
+</body>
+
+</html>
+
+{% endblock %}

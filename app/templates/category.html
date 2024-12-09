@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Display category name at the top -->
+{% if products|length > 0 %}
+<h2>{{ products[0].category }}</h2>
+{% endif %}
+
+<!-- Product Display -->
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <a href="{{ url_for('product_detail', product_id=product.id) }}">
+                <img src="{{ product.image_url }}" class="card-img-top" alt="{{ product.name }}">
+            </a>
+            <div class="card-body d-flex flex-column">
+    
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text font-weight-bold">{{ product.price }}</p>
+
+                <!-- Add to Cart form -->
+                <form method="POST" action="{{ url_for('product_detail', product_id=product.id, gender=gender, category=category) }}">
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit" class="cart btn btn-primary">ADD TO CART</button>
+                </form>
+
+                <!-- Add to Favorites Button -->
+                <form method="POST" action="{{ url_for('add_to_favorites', product_id=product.id) }}">
+                    <button type="submit" class="gender btn">ADD TO FAVORITES</button>
+                </form>
+
+                <div class="mt-auto"></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

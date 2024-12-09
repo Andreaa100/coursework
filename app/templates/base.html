@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  {% if title %}
+  <title>{{ title }}</title>
+  {% else %}
+  <title>No title specified</title>
+  {% endif %}
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light fixed-top">
+    <!-- "AZAR" aligned to the left -->
+    <a class="AZAR">AZAR</a>
+
+    <!-- Navbar Toggler for mobile view -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Right Side Links -->
+      <ul class="navbar-nav mr-auto d-flex align-items-center">
+
+        <!-- Dropdown for WOMAN -->
+        <li class="nav-item dropdown mx-3">
+          <a class="gender" href="#" id="womanDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            WOMAN
+          </a>
+          <div class="dropdown-menu" aria-labelledby="womanDropdown">
+            <a class="dropdown-item" href="/category/WOMAN/JACKETS">JACKETS</a>
+            <a class="dropdown-item" href="/category/WOMAN/DRESSES | SKIRTS">DRESSES | SKIRTS</a>
+            <a class="dropdown-item" href="/category/WOMAN/TROUSERS">JEANS</a>
+            <a class="dropdown-item" href="/category/WOMAN/T-SHIRTS | SHIRTS">T-SHIRTS | SHIRTS</a>
+            <a class="dropdown-item" href="/category/WOMAN/SHOES">SHOES</a>
+            <a class="dropdown-item" href="/category/WOMAN/ACCESSORIES">ACCESSORIES</a>
+          </div>
+        </li>
+
+        <!-- Dropdown for MAN -->
+        <li class="nav-item dropdown mx-3">
+          <a class="gender" href="#" id="manDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            MAN
+          </a>
+          <div class="dropdown-menu" aria-labelledby="manDropdown">
+            <a class="dropdown-item" href="/category/MAN/JACKETS">JACKETS</a>
+            <a class="dropdown-item" href="/category/MAN/TROUSERS">TROUSERS</a>
+            <a class="dropdown-item" href="/category/MAN/HOODIES | SWEATSHIRTS">HOODIES | SWEATSHIRTS</a>
+            <a class="dropdown-item" href="/category/MAN/T-SHIRTS | SHIRTS">T-SHIRTS | SHIRTS</a>
+            <a class="dropdown-item" href="/category/MAN/SHOES">SHOES</a>
+          </div>
+        </li>
+
+        <!-- Search Bar between LOGIN and MAN -->
+        <li class="nav-item mx-3">
+          <form class="form-inline" action="{{ url_for('search') }}" method="get">
+            <input class="search-bar" type="search" placeholder="SEARCH" aria-label="Search" name="query"
+              value="{{ request.args.get('query', '') }}">
+          </form>
+        </li>
+
+        <!-- Account/Login/Register -->
+        {% if current_user.is_authenticated %}
+        <li class="nav-item mx-3">
+          <a href="{{ url_for('profile') }}" class="account">MY ACCOUNT</a>
+        </li>
+        {% else %}
+        <li class="nav-item mx-3">
+          <a href="{{ url_for('login') }}" class="account">LOGIN</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a href="{{ url_for('register') }}" class="account">REGISTER</a>
+        </li>
+        {% endif %}
+
+        <!-- Favorites and Cart -->
+        <li class="nav-item mx-3">
+          <a href="/favorites" class="icon" title="Favorites">
+            <i class="fas fa-heart"></i>
+          </a>
+        </li>
+        <li class="nav-item mx-3">
+          <a href="/cart" class="icon" title="Cart">
+            <i class="fas fa-shopping-bag"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container body">
+    <!-- Flashed Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flash-messages">
+        {% for category, message in messages %}
+        <li class="{{ category }}">
+            <span class="message-text">{{ message }}</span>
+            <button class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    
+
+    {% block content %}{% endblock %}
+  </div>
+
+
+  <!-- Cookie Consent Popup -->
+  <div id="cookie-consent-popup" style="display: block;">
+    <p>This site uses cookies to improve your experience. We will use first-party and third-party cookies to understand 
+      the uses of our online store and to be able to improve it, adapt the content to your preferences and personalize our advertisements, marketing and publications on social networks.
+      You can accept all of them or only the neccessary ones by clicking on the corresponding buttons.</p>
+    <button class="accept-all">Accept All Cookies</button>
+    <button class="accept-necessary">Accept Necessary Cookies</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="font container text-center">
+      <p><strong>EMAIL:</strong> contact@azarstore.com</p>
+      <p><strong>PHONE NUMBER:</strong> 0800 368 4990</p>
+      <div>
+        <a href="https://www.instagram.com/zara" class="btn btn-outline-light mx-2" target="_blank">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://www.pinterest.com/zaraofficial" class="btn btn-outline-light mx-2" target="_blank">
+          <i class="fab fa-pinterest"></i> Pinterest
+        </a>
+        <a href="https://www.tiktok.com/@zara" class="btn btn-outline-light mx-2" target="_blank">
+          <i class="fab fa-tiktok"></i> TikTok
+        </a>
+        <a href="https://www.facebook.com/zara" class="btn btn-outline-light mx-2" target="_blank">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+        <a href="https://www.youtube.com/user/zara" class="btn btn-outline-light mx-2" target="_blank">
+          <i class="fab fa-youtube"></i> YouTube
+        </a>
+        <a href="https://open.spotify.com/user/zara" class="btn btn-outline-light mx-2" target="_blank">
+          <i class="fab fa-spotify"></i> Spotify
+        </a>
+      </div>
+      <p class="font mt-3">&copy; 2024 AZAR. All rights reserved.</p>
+    </div>
+  </footer>
+
+ <!-- Include Required JavaScript -->
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <!-- Popper.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+  <!-- Cookie Consent JavaScript -->
+  <link rel="stylesheet" type="text.css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js"></script>
+  <script src="{{ url_for('static', filename='cookies.js') }}"></script>
+</body>
+
+</html>

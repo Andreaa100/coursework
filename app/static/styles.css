@@ -1,0 +1,475 @@
+.hidden {
+    display: none !important;
+  }
+  
+#cookie-consent-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    font-size: 10px;
+    z-index: 1000;
+    border-radius: 0px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  #cookie-consent-popup .accept-all {
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    padding: 8.5px 8.5px;
+    font-family: Arial, Garamond, serif;
+    background-color: black;
+    border-radius: 0px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#cookie-consent-popup .accept-all:hover {
+    font-weight: 500;
+    color: white;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    background-color: #424949;
+}
+
+#cookie-consent-popup .accept-necessary {
+    font-weight: 500;
+    color: black;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    background-color: white;
+    text-decoration: none;
+}
+
+#cookie-consent-popup .accept-necessary:hover {
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    padding: 8.5px 8.5px;
+    font-family: Arial, Garamond, serif;
+    background-color: #424949;
+}
+
+.bar {
+    text-align: right;
+}
+.search-bar {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    width: 450px;
+    margin-left: 150px;
+}
+.search-bar::placeholder {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-family: Arial, Garamond, serif;
+    margin-right: 0px;
+}
+
+.flash-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: none;
+    padding: 8px 8px;
+    border-radius: 0px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.flash-messages li {
+    position: relative;
+    padding: 10px 40px 10px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    list-style-type: none;
+    font-size: 16px;
+    color: #333;
+}
+
+.flash-messages .message-text {
+    display: inline-block;
+    max-width: 90%;
+    word-wrap: break-word;
+}
+
+.flash-messages .close-btn {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    color: #888;
+}
+
+.flash-messages .close-btn:hover {
+    color: #000;
+}
+
+.login_password {
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #000; 
+    background-color: transparent;
+    outline: none;
+    padding: 5px 0; 
+    font-size: 16px;
+    margin-top: 30px;
+}
+.login_password {
+    border-bottom: 1px solid #000;
+    outline: none;
+}
+
+.login_password {
+    outline: none;
+}
+#current_password, #new_password, #confirm_password {
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #000; 
+    background-color: transparent;
+    outline: none;
+    padding: 5px 0; 
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+#current_password:focus, #new_password:focus, 
+#confirm_password:focus {
+    border-bottom: 2px solid #000;
+    outline: none;
+}
+
+#current_password::placeholder, #new_password::placeholder, #confirm_password::placeholder {
+    outline: none;
+}
+
+.history {
+    font-weight: 500;
+    margin-top: 30px;
+    font-size: 15px;
+    color: black;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    background-color: white;
+}
+
+.history:hover {
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    padding: 8.5px 8.5px;
+    font-family: Arial, Garamond, serif;
+    background-color: #424949;
+}
+
+.logout {
+    margin-bottom: 0px;
+    font-size: 15px;
+    font-family: Arial, Garamond, serif;
+    border: none;
+    background-color: transparent;
+    color: #424949;
+    text-decoration: underline;
+}
+
+.logout:hover {
+    border: none;
+    background-color: transparent;
+    color: #424949;
+    text-decoration: underline;
+}
+
+.logout:focus {
+    border: none;
+    background-color: transparent;
+    color: #424949;
+    text-decoration: underline;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; 
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+}
+
+.card-text {
+    flex-grow: 1;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+}
+
+.card-body form button {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+    row-gap: 20px;
+}
+
+.card-body form button:active {
+    background-color: #424949 !important;
+    border-color: #424949 !important;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.2s ease-in-out;
+}
+
+.nav-item .dropdown-item:focus {
+    background-color: #424949;
+    color: white !important;
+}
+
+.nav-item .gender:hover, 
+.nav-item .dropdown-item:hover {
+    background-color: #424949;
+    color: white !important;
+}
+
+h1{
+    text-align: left;
+    color: black;
+    font-family: Arial, Garamond, serif;
+    font-size: 24px;
+}
+
+h2{
+    text-align: left;
+    color: black;
+    font-family: Arial, Garamond, serif;
+    font-size: 16px;
+}
+
+h3{
+    text-align: left;
+    color: black;
+    font-family: Arial, Garamond, serif;
+    font-size: 20px;
+}
+
+.font {
+    font-family: Arial, Garamond, serif;
+}
+
+.navbar {
+    background-color: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.body {
+    padding-top: 180px;
+}
+
+.AZAR {
+    font-size: 100px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: black;
+    margin-right: 50px;
+    padding-left: 20px;
+}
+
+.checkout {
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    padding: 8.5px 8.5px;
+    font-family: Arial, Garamond, serif;
+    background-color: black;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.checkout:hover {
+    font-weight: 500;
+    color: white;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    background-color: #424949;
+}
+
+.cart {
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    padding: 8.5px 8.5px;
+    font-family: Arial, Garamond, serif;
+    background-color: black;
+    border-radius: 0px;
+    margin-bottom: 10px;
+}
+
+.cart:hover {
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    background-color: #424949;
+}
+
+.gender {
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    background-color: white;
+    text-decoration: none;
+}
+
+.gender:hover {
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    padding: 8.5px 8.5px;
+    font-family: Arial, Garamond, serif;
+    background-color: #424949;
+}
+
+.account {
+    font-family: Arial, Garamond, serif;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+}
+
+.account:hover {
+    color: black;
+}
+
+.icon {
+    font-family: Arial, Garamond, serif;
+    color: black;
+    font-size: 16px;
+}
+
+.icon:hover {
+    color: #424949;
+}
+
+.decrease {
+    color: black;
+    font-weight: 400;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    outline: none;
+}
+
+.decrease:hover {
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-size: 30.50px;
+}
+
+.decrease:focus,
+.decrease:active {
+    color: black;
+    background-color: transparent !important;
+    border: none;
+    font-size: 30.50px;
+    outline: none;
+    box-shadow: none;
+}
+
+.add {
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    padding: 8.5px 8.5px;
+    font-family: Arial, Garamond, serif;
+    background-color: black;
+    border-radius: 0px;
+    margin-bottom: 0px;
+    margin-top: 14px;
+}
+
+.add:hover {
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    background-color: #424949;
+}
+
+.fav {
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    border: 1px solid black;
+    padding: 8px 8px;
+    border-radius: 0px;
+    font-family: Arial, Garamond, serif;
+    background-color: white;
+}
+
+.fav:hover {
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    padding: 8.5px 8.5px;
+    font-family: Arial, Garamond, serif;
+    background-color: #424949;
+}

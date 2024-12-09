@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>CART</h1>
+
+    <!-- Display insufficient stock message at the top -->
+    {% if insufficient_stock %}
+    <div class="alert alert-danger">
+        <p>Some items in your cart exceed the available stock. Please adjust your quantities.</p>
+    </div>
+    {% endif %}
+
+    {% if cart_items %}
+    <div class="row">
+        {% for item in cart_items %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ item.product.image_url }}" class="card-img-top" alt="{{ item.product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.product.name }}</h5>
+                    <p class="card-text">{{ item.product.description }}</p>
+                    <p class="card-text font-weight-bold">{{ item.product.price }}</p>
+
+                    <p class="card-text">Size: <strong>{{ item.size }}</strong></p>
+
+                    <!-- Check stock for the selected size -->
+                    {% if item.size == 'S' %}
+                    <p class="text">
+                        {% if item.quantity <= item.product.stock_s %}<span style="color: black;">In Stock: {{
+                            item.product.stock_s }}</span>
+                            {% else %}
+                            <span class="text-danger">Not enough stock for size S</span>
+                            {% endif %}
+                    </p>
+                    {% elif item.size == 'M' %}
+                    <p class="text">
+                        {% if item.quantity <= item.product.stock_m %}<span style="color: black;">In Stock: {{
+                            item.product.stock_m }}</span>
+                            {% else %}
+                            <span class="text-danger">Not enough stock for size M</span>
+                            {% endif %}
+                    </p>
+                    {% elif item.size == 'L' %}
+                    <p class="text">
+                        {% if item.quantity <= item.product.stock_l %}<span style="color: black;">In Stock: {{
+                            item.product.stock_l }}</span>
+                            {% else %}
+                            <span class="text-danger">Not enough stock for size L</span>
+                            {% endif %}
+                    </p>
+                    {% endif %}
+
+                    <!-- Quantity Adjustment -->
+                    <form method="POST" action="{{ url_for('update_cart_quantity', item_id=item.id) }}"
+                        class="d-flex align-items-center">
+                        <button type="submit" name="action" value="decrease" class="decrease">-</button>
+                        <input type="text" name="quantity" value="{{ item.quantity }}"
+                            class="quantity form-control mx-2 text-center">
+                        <button type="submit" name="action" value="increase" class="decrease">+</button>
+                    </form>
+
+
+                    <!-- Remove Product from Cart -->
+                    <form method="POST" action="{{ url_for('remove_from_cart', item_id=item.id) }}" class="mt-2">
+                        <button type="submit" class="gender">Remove</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row align-items-center mt-4">
+        <!-- Total Price -->
+        <div class="col-md-6 text-left">
+            <strong><h1>Total: £{{ total_price|round(2) }}</h1></strong>
+        </div>
+
+        <!-- Checkout Button -->
+        <div class="col-md-6 text-right">
+            {% if insufficient_stock %}
+            <button class="cart btn btn-primary" disabled>CHECKOUT</button>
+            {% else %}
+            <a href="{{ url_for('checkout') }}" class="checkout btn btn-primary">CHECKOUT</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% else %}
+    <p>YOUR CART IS EMPTY</p>
+    <a href="{{ url_for('home') }}" class="cart">START SHOPPING</a>
+    {% endif %}
+</div>
+{% endblock %}

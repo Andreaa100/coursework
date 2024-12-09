@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1>LOGIN</h1>
+
+    <form method="POST" action="{{ url_for('login') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.email(class="login_password form-control", id="email", placeholder="ENTER YOUR EMAIL") }}
+        </div>
+        <div class="form-group">
+            {{ form.password(class="login_password form-control", id="password", placeholder="ENTER YOUR PASSWORD") }}
+        </div>
+        <button type="submit" class="cart btn btn-block">LOGIN</button>
+        <p class="text-center mt-3">
+            Don't have an account? <a href="{{ url_for('register') }}">Register here</a>
+        </p>
+    </form>
+</div>
+
+{% endblock %}

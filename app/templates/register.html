@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>PERSONAL DETAILS</h1>
+
+    <form method="POST" action="{{ url_for('register') }}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.email(class="login_password form-control", id="email", placeholder="EMAIL ADDRESS") }}
+        </div>
+        <div class="form-group">
+            {{ form.password(class="login_password form-control", id="password", placeholder="PASSWORD") }}
+        </div>
+        <div class="form-group">
+            {{ form.confirm_password(class="login_password form-control", id="confirm_password", placeholder="CONFIRM PASSWORD") }}
+        </div>
+        <div class="form-group">
+            {{ form.name(class="login_password form-control", id="name", placeholder="NAME") }}
+        </div>
+        <div class="form-group">
+            {{ form.surname(class="login_password form-control", id="surname", placeholder="SURNAME") }}
+        </div>
+
+        <button type="submit" class="cart btn-block">CREATE ACCOUNT</button>
+        <p class="text-center mt-3">
+
+            Already have an account? <a href="{{ url_for('login') }}">Login here</a>.
+        </p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+
+        <div>
+        {% endif %}
+        {% endwith %}
+    </form>
+
+    {% endblock %}
